@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -26,10 +27,14 @@ public class PlayerController : MonoBehaviour
     public bool isGrounded;
 
     //States to help deal with different actions
-    private enum PlayerState
+    //Advanced Task:
+    //Do the states definition/declaration need to be in the Player Controller
+    //Can the player states use a common game pattern in Unity?
+    public enum PlayerState
     {
         Normal,
-        Jumping
+        Jumping,
+        Interaction
     }
 
     private PlayerState state;
@@ -130,5 +135,16 @@ public class PlayerController : MonoBehaviour
     {
         // Implement ground detection logic
         return true; // Placeholder; replace with actual ground check
+    }
+
+    //Do the functions below really belong in the Player Controller
+    public void ChangeState(int newState)
+    {
+        state=(PlayerState)newState;
+    }
+
+    public void  ResetToDefault()
+    {
+        state=PlayerState.Normal;
     }
 }
