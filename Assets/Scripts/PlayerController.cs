@@ -96,6 +96,16 @@ public class PlayerController : MonoBehaviour
             animator.SetFloat("Horizontal", moveInput.x);
             animator.SetFloat("Vertical", moveInput.y);
         }
+
+        if (state == PlayerState.Interaction)
+        {
+            state = PlayerState.Normal;
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            state = PlayerState.Interaction;
+        }
     }
 
     private void TryJump()
@@ -149,6 +159,12 @@ public class PlayerController : MonoBehaviour
     public void ChangeState(int newState)
     {
         state=(PlayerState)newState;
+    }
+
+    public bool IsInteracting()
+    {
+        if (state == PlayerState.Interaction) return true;
+        return false;
     }
 
     public void  ResetToDefault()
