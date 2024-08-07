@@ -15,9 +15,9 @@ public class PlayerController : MonoBehaviour
     private bool isJumping;
     private Vector3 moveDirection;
     // Movement and rotation parameters
-    public float moveSpeed = 5f;
-    public float jumpForce = 5f;
-    public float rotationSpeed = 10f;  // Speed of rotation
+    public float moveSpeed;
+    public float jumpForce;
+    public float rotationSpeed;  // Speed of rotation
 
     // Components
     private Rigidbody rb;
@@ -56,6 +56,14 @@ public class PlayerController : MonoBehaviour
         playerControls.Locomotion.Look.canceled += ctx => lookInput = 0f;
 
         playerControls.Locomotion.Jump.performed += ctx => TryJump();
+    }
+
+    private void Start()
+    {
+        // read all the player values
+        moveSpeed = PlayerManager.instance.playerSO.speed;
+        jumpForce = PlayerManager.instance.playerSO.jumpForce;
+        rotationSpeed = PlayerManager.instance.playerSO.rotationSpeed;
     }
 
     private void OnEnable()

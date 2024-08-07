@@ -29,4 +29,5 @@ public class UIManager : MonoBehaviour
     {
         healthSlider.value = newHealth;
     }
+
 }

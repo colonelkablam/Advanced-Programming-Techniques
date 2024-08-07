@@ -1,36 +1,69 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Numerics;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    //Declare a Delagate 
+    // Declare a Delegate
     public delegate void OnHealthChanged(int newHealth);
 
-    //Define an Event Using the Delegate
+    public PlayerSO playerSO; // data object for the player
+
+    public static PlayerManager instance; // 
+
+    // Define an Event Using the Delegate
     public event OnHealthChanged HealthChanged;
 
-    public int health=100;
+    public int health;
+    public int score;
 
-    public int score = 0;
+    private bool playerUsingState = false;
 
-
-
-    //The main function which will call the delegate 
-    public void TakeDamage(int damage)
+    public void Awake()
     {
-        health -= damage;
-        HealthChanged?.Invoke(health);//Tip 1: '?' checks if the event is null //Tip 2: Invoke notifies all the subscriber
+        if (instance != null)
+        {
+            Debug.LogError("Multiple PlayerManager instances being created");
+        }
+        else
+        {
+            instance = this;
+        }
+    }
+
+    public void Start()
+    {
+        health = playerSO.health;
+        score = 0;
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.O))
         {
             TakeDamage(25);
         }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            playerUsingState = true;
+            Debug.Log("Player Using");
+        }
     }
 
-    
+    // The main function which will call the delegate 
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        HealthChanged?.Invoke(health); // '?' checks if the event is null and Invoke notifies all the subscribers
+    }
+
+    public bool GetPlayerUsing()
+    {
+        return playerUsingState;
+    }
+
+    public void ResetPlayerUsingState()
+    {
+        playerUsingState = false;
+    }
 }

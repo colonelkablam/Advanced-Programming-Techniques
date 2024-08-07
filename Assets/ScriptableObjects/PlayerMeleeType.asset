@@ -9,9 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16e8f8ebc7d850b4fad0aa5930c97e73, type: 3}
-  m_Name: NewSpawn
+  m_Script: {fileID: 11500000, guid: 380cd781a78957b4d9427d7041afdb9b, type: 3}
+  m_Name: PlayerMeleeType
   m_EditorClassIdentifier: 
-  name: 
-  description: 
-  gameObject: {fileID: 0}
+  name: Nick
+  speed: 10
+  jumpForce: 0
+  rotationSpeed: 15
+  health: 100
+  playerObject: {fileID: 7075630507705581155, guid: 766fbe82ff826e24a88644e84bdf8f9a,
+    type: 3}

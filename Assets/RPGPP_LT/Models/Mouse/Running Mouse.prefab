@@ -1702,6 +1702,7 @@ GameObject:
   - component: {fileID: 2002516998280160783}
   - component: {fileID: 6837636038917925866}
   - component: {fileID: 5398412453267562250}
+  - component: {fileID: 2485327523801465764}
   m_Layer: 0
   m_Name: Running Mouse
   m_TagString: Untagged
@@ -1788,6 +1789,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &2485327523801465764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7737838099833543389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b0da24e9c6e7bd4094b20c89905530b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  despawnTime: 3
 --- !u!1 &7740743839020875951
 GameObject:
   m_ObjectHideFlags: 0
